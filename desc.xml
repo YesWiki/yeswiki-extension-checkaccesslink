@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<plugin name="wkcheckaccesslink" version="0.1" active="1">
+  <author>Olivier Picot</author>
+  <label>CheckAccessLink</label>
+  <desc>Check Access Link: remove menu item or link which are suffixed by the string set in the 'alter_management_string' and access is not allowed</desc>
+</plugin>
