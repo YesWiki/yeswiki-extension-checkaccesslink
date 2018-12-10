@@ -53,17 +53,17 @@
                     $this->TrackLinkTo($tag);
                 }
                 // We check the string of right checking in config
-                $search_string = $this->config["alter_management_string"];
-                $check_string = (empty($search_string)?false:true);
+                if (isset($this->config["alter_management_string"]))
+                    $search_string = $this->config["alter_management_string"];
+                else
+                    $search_string = 'cacher_si_pas_autorise';
                 $checked=false;
                 // We check if the string name have the operator
-                if ($check_string) {
-                    $pos = strpos($displayText, $search_string);
-                    if ($pos!==false){
-                        $displayText=  substr($displayText,0,$pos);
-                        $checked=true;
+                $pos = strpos($displayText, $search_string);
+                if ($pos!==false){
+                    $displayText=  substr($displayText,0,$pos);
+                    $checked=true;
                     }
-                }
 
                 // The Target page is not within the scope rights of the user. Link is ignored.
                 if ($checked && ! $this->HasAccess('read', $tag)){
