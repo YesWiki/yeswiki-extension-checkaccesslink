@@ -3,27 +3,22 @@
 /**
  * wiki.php
  *
- * Description : fichier de configuration de bazar
+ * Description : fichier de configuration de checkaccesslink
  *
- *@package wkbazar
+ *@package wkcheckaccesslink
  *
- *@author        Florian SCHMITT <florian@outils-reseaux.org>
+ *@author        Olivier PICOT <sylvain@boyer.earth>
+ *@author        Sylvain BOYER <sylvain@boyer.earth>
+ *@author        Florian SCHMITT <mrflos@lilo.org>
  *
- *@copyright     outils-reseaux.org 2008
- *@version       $Revision: 1.12 $ $Date: 2010-12-01 17:01:38 $
- *  +------------------------------------------------------------------------------------------------------+
  */
-
-
 
 if (!defined("WIKINI_VERSION")) {
     die("acc&egrave;s direct interdit");
 }
 
-$wikiClasses[] = 'checkaccesslink';
-
-// fonctions supplementaires a ajouter la classe wiki
-$fp = @fopen('tools/checkaccesslink/includes/YesWiki.php', 'r');
-$contents = fread($fp, filesize('tools/checkaccesslink/includes/YesWiki.php'));
-fclose($fp);
-$wikiClassesContent [] = str_replace('<?php', '', $contents);
+// We check the string of right checking in config
+if (!isset($wakkaConfig['alter_management_string'])) {
+    // default value if not set = cacher_si_pas_autorise
+    $wakkaConfig['alter_management_string'] = 'cacher_si_pas_autorise';
+}
